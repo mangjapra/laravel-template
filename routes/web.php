@@ -63,6 +63,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logout', [SessionsController::class, 'destroy']);
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
+	Route::get('/add-user', [InfoUserController::class, 'addusersession']);
+	Route::post('/add-user', [InfoUserController::class, 'storenewuser']);
+	Route::get('/cancel-add-user', [InfoUserController::class, 'canceladdusersession']);
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
     Route::get('/login', function () {
 		return view('dashboard');

@@ -54,4 +54,25 @@ class InfoUserController extends Controller
 
         return redirect('/user-profile')->with('success','Profile updated successfully');
     }
+
+    public function storenewuser(Request $request)
+    {
+        $attributes = request()->validate([
+            'name' => ['required', 'max:50'],
+            'email' => ['required', 'email'],
+            'phone' => ['max:50'],
+            'location' => ['max:50'],
+        ]);
+        dd($attributes);
+    }
+
+    public function addusersession()
+    {
+        return redirect('/user-management')->with('addusersession', 'add new user here');
+    }
+
+    public function canceladdusersession()
+    {
+        return redirect('/user-management')->with('','');
+    }
 }
